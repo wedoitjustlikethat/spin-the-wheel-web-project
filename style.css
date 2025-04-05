@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#wheel {
+    transition: transform 0.5s ease-out;
+    will-change: transform;
+    cursor: grab;
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: auto;
+}
+
+#wheel.dragging {
+    cursor: grabbing;
+}
+
+@keyframes rotateWheel {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
+}
+
+
+#wheel-wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 50px auto;
+}
+
+#wheel-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+#wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(hsl(0, 70%, 60%) 0% 12.5%,
+            hsl(45, 70%, 60%) 12.5% 25%,
+            hsl(90, 70%, 60%) 25% 37.5%,
+            hsl(135, 70%, 60%) 37.5% 50%,
+            hsl(180, 70%, 60%) 50% 62.5%,
+            hsl(225, 70%, 60%) 62.5% 75%,
+            hsl(270, 70%, 60%) 75% 87.5%,
+            hsl(315, 70%, 60%) 87.5% 100%);
+    transition: transform 0.2s;
+}
+
+#pointer {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid rgb(15, 30, 114);
+    z-index: 10;
+}
+
+#slidedTo {
+    font-size: 60px;
+    text-shadow: 0 2px 4px #000;
+}
